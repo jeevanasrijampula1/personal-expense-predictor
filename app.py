@@ -335,7 +335,21 @@ if expenses.empty:
     st.stop()
 
 
+expenses["Date"] = pd.to_datetime(
+    expenses["Date"],
+    errors="coerce"
+)
 
+expenses["Amount"] = pd.to_numeric(
+    expenses["Amount"],
+    errors="coerce"
+)
+expenses["Date"] = pd.to_datetime(expenses["Date"], errors="coerce")
+expenses["Amount"] = pd.to_numeric(expenses["Amount"], errors="coerce")
+expenses = expenses.dropna(subset=["Date", "Amount"]).copy()
+expenses = expenses.dropna(
+    subset=["Date", "Amount", "Category"]
+).copy()
 st.header("📊 Expense Dashboard")
 
 total_expense = expenses["Amount"].sum()
