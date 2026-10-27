@@ -1,6 +1,7 @@
 import streamlit as st
 import pandas as pd
 import matplotlib.pyplot as plt
+
 from sklearn.linear_model import LinearRegression
 from pathlib import Path
 
@@ -18,16 +19,24 @@ st.write(
     "manage your budget, and predict future expenses using Machine Learning."
 )
 
-
 DATA_FILE = Path("cleaned_expense_data.csv")
 CURRENT_FILE = Path("user_expenses.csv")
 
 
-
 @st.cache_data
 def load_historical_data():
+
     if not DATA_FILE.exists():
-        return pd.DataFrame()
+        return pd.DataFrame(
+            columns=[
+                "Date",
+                "Amount",
+                "Category",
+                "Income/Expense",
+                "Note",
+                "Data Source"
+            ]
+        )
 
     data = pd.read_csv(DATA_FILE)
 
@@ -39,7 +48,8 @@ def load_historical_data():
     ]
 
     missing_columns = [
-        column for column in required_columns
+        column
+        for column in required_columns
         if column not in data.columns
     ]
 
@@ -48,6 +58,9 @@ def load_historical_data():
             "Missing columns in cleaned_expense_data.csv: "
             + ", ".join(missing_columns)
         )
+
+    if "Note" not in data.columns:
+        data["Note"] = ""
 
     data["Date"] = pd.to_datetime(
         data["Date"],
@@ -61,7 +74,7 @@ def load_historical_data():
 
     data = data.dropna(
         subset=["Date", "Amount", "Category"]
-    )
+    ).copy()
 
     data["Category"] = data["Category"].astype(str)
 
@@ -81,9 +94,10 @@ def load_historical_data():
     return data
 
 
-
 def load_current_expenses():
+
     columns = [
+        "Expense ID",
         "Date",
         "Category",
         "Amount",
@@ -92,14 +106,34 @@ def load_current_expenses():
     ]
 
     if not CURRENT_FILE.exists():
+
         return pd.DataFrame(columns=columns)
 
     try:
+
         data = pd.read_csv(CURRENT_FILE)
 
+        if data.empty:
+            return pd.DataFrame(columns=columns)
+
         for column in columns:
+
             if column not in data.columns:
-                data[column] = None
+
+                if column == "Expense ID":
+
+                    data[column] = range(
+                        1,
+                        len(data) + 1
+                    )
+
+                elif column == "Income/Expense":
+
+                    data[column] = "Expense"
+
+                else:
+
+                    data[column] = ""
 
         data["Date"] = pd.to_datetime(
             data["Date"],
@@ -111,35 +145,82 @@ def load_current_expenses():
             errors="coerce"
         )
 
+        data["Expense ID"] = pd.to_numeric(
+            data["Expense ID"],
+            errors="coerce"
+        )
+
         data = data.dropna(
-            subset=["Date", "Amount", "Category"]
+            subset=[
+                "Expense ID",
+                "Date",
+                "Amount",
+                "Category"
+            ]
+        ).copy()
+
+        data["Expense ID"] = (
+            data["Expense ID"].astype(int)
         )
 
         data["Category"] = data["Category"].astype(str)
 
+        data = data[
+            data["Income/Expense"]
+            .astype(str)
+            .str.strip()
+            .str.lower()
+            == "expense"
+        ].copy()
+
         return data[columns].copy()
 
-    except (pd.errors.EmptyDataError, pd.errors.ParserError):
+    except (
+        pd.errors.EmptyDataError,
+        pd.errors.ParserError
+    ):
+
         return pd.DataFrame(columns=columns)
 
 
+
+def save_current_expenses(data):
+
+    columns = [
+        "Expense ID",
+        "Date",
+        "Category",
+        "Amount",
+        "Income/Expense",
+        "Note"
+    ]
+
+    data = data.copy()
+
+    for column in columns:
+
+        if column not in data.columns:
+
+            data[column] = ""
+
+    data = data[columns]
+
+    data.to_csv(
+        CURRENT_FILE,
+        index=False
+    )
+
+
 try:
+
     historical_expenses = load_historical_data()
 
-except (ValueError, pd.errors.ParserError) as error:
-    st.error(f"Dataset error: {error}")
-    st.stop()
-
 except Exception as error:
-    st.error(f"Unable to load historical data: {error}")
-    st.stop()
 
-
-if historical_expenses.empty and not CURRENT_FILE.exists():
     st.error(
-        "Historical expense data not found. "
-        "Please check cleaned_expense_data.csv."
+        f"Unable to load historical data: {error}"
     )
+
     st.stop()
 
 
@@ -148,21 +229,43 @@ current_expenses = load_current_expenses()
 
 st.header("➕ Add Present Expense")
 
+historical_categories = []
+
 if not historical_expenses.empty:
-    available_categories = sorted(
+
+    historical_categories = (
         historical_expenses["Category"]
         .dropna()
         .astype(str)
         .unique()
         .tolist()
     )
-else:
-    available_categories = []
+
+current_categories = []
+
+if not current_expenses.empty:
+
+    current_categories = (
+        current_expenses["Category"]
+        .dropna()
+        .astype(str)
+        .unique()
+        .tolist()
+    )
+
+available_categories = sorted(
+    set(historical_categories + current_categories)
+)
 
 if "Other" not in available_categories:
+
     available_categories.append("Other")
 
-with st.form("expense_entry_form", clear_on_submit=True):
+
+with st.form(
+    "expense_entry_form",
+    clear_on_submit=True
+):
 
     expense_date = st.date_input(
         "Expense Date",
@@ -174,12 +277,13 @@ with st.form("expense_entry_form", clear_on_submit=True):
         available_categories
     )
 
+    custom_category = ""
+
     if expense_category == "Other":
+
         custom_category = st.text_input(
             "Enter Category Name"
         )
-    else:
-        custom_category = ""
 
     expense_amount = st.number_input(
         "Expense Amount (₹)",
@@ -207,13 +311,33 @@ if add_expense_button:
     )
 
     if not final_category:
-        st.error("Please enter a category name.")
+
+        st.error(
+            "Please enter a category name."
+        )
 
     elif pd.Timestamp(expense_date) > pd.Timestamp.today().normalize():
-        st.error("Please select today or an earlier date.")
+
+        st.error(
+            "Please select today or an earlier date."
+        )
 
     else:
+
+        current_expenses = load_current_expenses()
+
+        if current_expenses.empty:
+
+            next_id = 1
+
+        else:
+
+            next_id = (
+                int(current_expenses["Expense ID"].max()) + 1
+            )
+
         new_expense = pd.DataFrame([{
+            "Expense ID": next_id,
             "Date": pd.Timestamp(expense_date),
             "Category": final_category,
             "Amount": float(expense_amount),
@@ -230,10 +354,8 @@ if add_expense_button:
         )
 
         try:
-            updated_expenses.to_csv(
-                CURRENT_FILE,
-                index=False
-            )
+
+            save_current_expenses(updated_expenses)
 
             st.success(
                 f"Expense of ₹{expense_amount:,.2f} saved successfully!"
@@ -242,6 +364,7 @@ if add_expense_button:
             st.rerun()
 
         except OSError as error:
+
             st.error(
                 f"Unable to save expense: {error}"
             )
@@ -250,11 +373,16 @@ if add_expense_button:
 
 current_expenses = load_current_expenses()
 
+historical_expenses = historical_expenses.copy()
+
 if not historical_expenses.empty:
+
     historical_expenses["Data Source"] = "Historical Data"
 
 if not current_expenses.empty:
+
     current_expenses["Data Source"] = "Current Entries"
+
 
 all_expenses = pd.concat(
     [
@@ -265,8 +393,28 @@ all_expenses = pd.concat(
 )
 
 if all_expenses.empty:
-    st.warning("No expense records available yet.")
+
+    st.info(
+        "No expense records available. Add your first expense above."
+    )
+
     st.stop()
+
+
+all_expenses["Date"] = pd.to_datetime(
+    all_expenses["Date"],
+    errors="coerce"
+)
+
+all_expenses["Amount"] = pd.to_numeric(
+    all_expenses["Amount"],
+    errors="coerce"
+)
+
+all_expenses = all_expenses.dropna(
+    subset=["Date", "Amount", "Category"]
+).copy()
+
 
 st.sidebar.header("⚙️ Settings")
 
@@ -282,16 +430,19 @@ selected_source = st.sidebar.selectbox(
 )
 
 if selected_source == "Historical Data":
+
     expenses = all_expenses[
         all_expenses["Data Source"] == "Historical Data"
     ].copy()
 
 elif selected_source == "Current Entries":
+
     expenses = all_expenses[
         all_expenses["Data Source"] == "Current Entries"
     ].copy()
 
 else:
+
     expenses = all_expenses.copy()
 
 
@@ -309,10 +460,29 @@ selected_categories = st.sidebar.multiselect(
     default=categories
 )
 
+if expenses.empty:
+
+    st.warning(
+        "No records available for the selected data source."
+    )
+
+    st.stop()
+
+
+min_date = expenses["Date"].min().date()
+max_date = expenses["Date"].max().date()
+
+date_range = st.sidebar.date_input(
+    "Filter Date Range",
+    value=(min_date, max_date),
+    min_value=min_date,
+    max_value=max_date
+)
+
 budget = st.sidebar.number_input(
     "Monthly Budget (₹)",
     min_value=0.0,
-    value=10000.0,
+    value=25000.0,
     step=500.0
 )
 
@@ -322,34 +492,39 @@ forecast_days = st.sidebar.select_slider(
     value=7
 )
 
+
+
 expenses = expenses[
     expenses["Category"].isin(selected_categories)
 ].copy()
 
+if isinstance(date_range, (tuple, list)) and len(date_range) == 2:
+
+    start_date = pd.Timestamp(date_range[0])
+
+    end_date = (
+        pd.Timestamp(date_range[1])
+        + pd.Timedelta(days=1)
+        - pd.Timedelta(microseconds=1)
+    )
+
+    expenses = expenses[
+        (expenses["Date"] >= start_date)
+        & (expenses["Date"] <= end_date)
+    ].copy()
+
 
 if expenses.empty:
+
     st.warning(
-        "No expenses match your selected filters. "
-        "Please select at least one category."
+        "No expenses match the selected filters. "
+        "Change the category or date range."
     )
+
     st.stop()
 
 
-expenses["Date"] = pd.to_datetime(
-    expenses["Date"],
-    errors="coerce"
-)
 
-expenses["Amount"] = pd.to_numeric(
-    expenses["Amount"],
-    errors="coerce"
-)
-expenses["Date"] = pd.to_datetime(expenses["Date"], errors="coerce")
-expenses["Amount"] = pd.to_numeric(expenses["Amount"], errors="coerce")
-expenses = expenses.dropna(subset=["Date", "Amount"]).copy()
-expenses = expenses.dropna(
-    subset=["Date", "Amount", "Category"]
-).copy()
 st.header("📊 Expense Dashboard")
 
 total_expense = expenses["Amount"].sum()
@@ -361,7 +536,6 @@ daily_expenses = (
         expenses["Date"].dt.normalize()
     )["Amount"]
     .sum()
-    .sort_index()
 )
 
 average_daily = daily_expenses.mean()
@@ -384,10 +558,9 @@ col3.metric(
 )
 
 st.caption(
-    "Historical totals include old records. "
-    "They should not be interpreted as current-month spending."
+    "Dashboard totals depend on the selected data source and filters. "
+    "Historical totals include old records and are not current-month totals."
 )
-
 
 
 st.header("📌 Expenses by Category")
@@ -398,24 +571,29 @@ category_expenses = (
     .sort_values(ascending=False)
 )
 
-fig, ax = plt.subplots(figsize=(10, 5))
-
-category_expenses.plot(
-    kind="bar",
-    ax=ax
-)
-
-ax.set_xlabel("Category")
-ax.set_ylabel("Expense Amount (₹)")
-ax.set_title("Total Expenses by Category")
-
-plt.xticks(rotation=35, ha="right")
-plt.tight_layout()
-
-st.pyplot(fig)
-plt.close(fig)
-
 if not category_expenses.empty:
+
+    fig, ax = plt.subplots(figsize=(10, 5))
+
+    category_expenses.plot(
+        kind="bar",
+        ax=ax
+    )
+
+    ax.set_xlabel("Category")
+    ax.set_ylabel("Expense Amount (₹)")
+    ax.set_title("Total Expenses by Category")
+
+    plt.xticks(
+        rotation=35,
+        ha="right"
+    )
+
+    plt.tight_layout()
+
+    st.pyplot(fig)
+
+    plt.close(fig)
 
     highest_category = category_expenses.idxmax()
 
@@ -427,6 +605,7 @@ if not category_expenses.empty:
     )
 
 
+
 st.header("📅 Monthly Expense Analysis")
 
 monthly_expenses = (
@@ -436,42 +615,57 @@ monthly_expenses = (
     .sum()
 )
 
-monthly_expenses.index = monthly_expenses.index.astype(str)
+monthly_table = monthly_expenses.rename(
+    "Total Expense (₹)"
+).reset_index()
+
+monthly_table.columns = [
+    "Month",
+    "Total Expense (₹)"
+]
+
+monthly_table["Month"] = (
+    monthly_table["Month"].astype(str)
+)
 
 fig, ax = plt.subplots(figsize=(10, 5))
 
-monthly_expenses.plot(
-    kind="line",
-    marker="o",
-    ax=ax
+ax.plot(
+    monthly_table["Month"],
+    monthly_table["Total Expense (₹)"],
+    marker="o"
 )
 
 ax.set_title("Monthly Expense Trend")
 ax.set_xlabel("Month")
 ax.set_ylabel("Expense Amount (₹)")
 
-plt.xticks(rotation=35, ha="right")
+plt.xticks(
+    rotation=35,
+    ha="right"
+)
+
 plt.tight_layout()
 
 st.pyplot(fig)
+
 plt.close(fig)
 
 st.dataframe(
-    monthly_expenses.rename(
-        "Total Expense (₹)"
-    ).reset_index().rename(columns={"Date": "Month"}),
+    monthly_table,
     use_container_width=True
 )
 
 
-st.header("💳 Monthly Budget Planner")
+st.header("📊 Monthly Spending Comparison")
 
 today = pd.Timestamp.today().normalize()
 
-current_month = today.to_period("M")
+this_month = today.to_period("M")
 
-# Budget uses only expenses entered by the user,
-# not old historical records.
+previous_month = this_month - 1
+
+# Compare current user-entered records only.
 user_expenses = load_current_expenses()
 
 if not user_expenses.empty:
@@ -488,20 +682,108 @@ if not user_expenses.empty:
 
     user_expenses = user_expenses.dropna(
         subset=["Date", "Amount"]
+    ).copy()
+
+    user_expenses = user_expenses[
+        user_expenses["Category"].isin(selected_categories)
+    ].copy()
+
+    this_month_total = user_expenses[
+        user_expenses["Date"].dt.to_period("M") == this_month
+    ]["Amount"].sum()
+
+    previous_month_total = user_expenses[
+        user_expenses["Date"].dt.to_period("M") == previous_month
+    ]["Amount"].sum()
+
+else:
+
+    this_month_total = 0.0
+    previous_month_total = 0.0
+
+
+col1, col2 = st.columns(2)
+
+col1.metric(
+    "Current Month Spending",
+    f"₹{this_month_total:,.2f}"
+)
+
+col2.metric(
+    "Previous Month Spending",
+    f"₹{previous_month_total:,.2f}"
+)
+
+difference = this_month_total - previous_month_total
+
+if difference > 0:
+
+    st.warning(
+        f"Spending is ₹{difference:,.2f} higher than last month."
     )
 
-    user_expenses_this_month = user_expenses[
-        user_expenses["Date"].dt.to_period("M") == current_month
-    ]
+elif difference < 0:
 
-    current_month_expenses = user_expenses_this_month[
-        user_expenses_this_month["Category"].isin(
-            selected_categories
+    st.success(
+        f"Spending is ₹{abs(difference):,.2f} lower than last month."
+    )
+
+else:
+
+    st.info(
+        "Spending is equal to the previous month."
+    )
+
+
+
+st.header("💳 Monthly Budget Planner")
+
+user_expenses = load_current_expenses()
+
+if not user_expenses.empty:
+
+    user_expenses["Date"] = pd.to_datetime(
+        user_expenses["Date"],
+        errors="coerce"
+    )
+
+    user_expenses["Amount"] = pd.to_numeric(
+        user_expenses["Amount"],
+        errors="coerce"
+    )
+
+    user_expenses = user_expenses.dropna(
+        subset=["Date", "Amount"]
+    ).copy()
+
+    current_month_expenses = user_expenses[
+        (
+            user_expenses["Date"].dt.to_period("M")
+            == this_month
+        )
+        & (
+            user_expenses["Category"].isin(
+                selected_categories
+            )
         )
     ]["Amount"].sum()
 
 else:
+
     current_month_expenses = 0.0
+
+
+remaining_budget = budget - current_month_expenses
+
+if budget > 0:
+
+    budget_used = (
+        current_month_expenses / budget
+    ) * 100
+
+else:
+
+    budget_used = 0.0
 
 
 col1, col2, col3 = st.columns(3)
@@ -511,42 +793,16 @@ col1.metric(
     f"₹{current_month_expenses:,.2f}"
 )
 
-remaining_budget = budget - current_month_expenses
-
 col2.metric(
     "Remaining Budget",
     f"₹{remaining_budget:,.2f}"
 )
-
-if budget > 0:
-    budget_used = (
-        current_month_expenses / budget
-    ) * 100
-else:
-    budget_used = 0.0
 
 col3.metric(
     "Budget Used",
     f"{budget_used:.1f}%"
 )
 
-if remaining_budget < 0:
-
-    st.error(
-        f"⚠️ Budget exceeded by ₹{abs(remaining_budget):,.2f}!"
-    )
-
-elif budget > 0:
-
-    st.success(
-        "Your expenses are within your monthly budget."
-    )
-
-else:
-
-    st.info(
-        "Set a budget greater than ₹0 to track your spending limit."
-    )
 
 if budget > 0:
 
@@ -557,27 +813,79 @@ if budget > 0:
         )
     )
 
+    if remaining_budget < 0:
 
+        st.error(
+            f"⚠️ Budget exceeded by ₹{abs(remaining_budget):,.2f}!"
+        )
+
+    elif budget_used >= 80:
+
+        st.warning(
+            "⚠️ You have used at least 80% of your monthly budget."
+        )
+
+    else:
+
+        st.success(
+            "Your expenses are within your monthly budget."
+        )
+
+else:
+
+    st.info(
+        "Set a monthly budget greater than ₹0 to track your spending."
+    )
 
 st.header("🤖 Future Expense Prediction")
 
 st.write(
-    "The model uses your recently entered expenses "
-    "to estimate future spending."
+    "Linear Regression estimates future daily spending "
+    "using recent user-entered expense records."
 )
+
+user_expenses = load_current_expenses()
+
+if not user_expenses.empty:
+
+    user_expenses["Date"] = pd.to_datetime(
+        user_expenses["Date"],
+        errors="coerce"
+    )
+
+    user_expenses["Amount"] = pd.to_numeric(
+        user_expenses["Amount"],
+        errors="coerce"
+    )
+
+    user_expenses = user_expenses.dropna(
+        subset=["Date", "Amount"]
+    ).copy()
+
+    user_expenses = user_expenses[
+        (user_expenses["Amount"] >= 0)
+        & (
+            user_expenses["Date"]
+            <= today
+        )
+        & (
+            user_expenses["Category"].isin(
+                selected_categories
+            )
+        )
+    ].copy()
+
 
 if user_expenses.empty:
 
     st.warning(
-        "You have not entered any current expenses yet. "
-        "Add your expenses above to enable current-spending predictions. "
-        "The historical 2022 dataset is not used as current spending."
+        "Add current expenses in your selected categories "
+        "to enable prediction."
     )
 
 else:
 
-    # Use recent user-entered expense records only.
-    recent_start = today - pd.Timedelta(days=89)
+    recent_start = today - pd.Timedelta(days=29)
 
     recent_expenses = user_expenses[
         (user_expenses["Date"] >= recent_start)
@@ -587,13 +895,13 @@ else:
     if recent_expenses.empty:
 
         st.warning(
-            "No current expense records were found in the last 90 days. "
-            "Add recent expenses before generating a current forecast."
+            "No expenses were recorded in the last 30 days. "
+            "Add recent records before predicting future expenses."
         )
 
     else:
 
-        # Aggregate expenses by date.
+        # Sum recorded expenses by day.
         recent_daily = (
             recent_expenses.groupby(
                 recent_expenses["Date"].dt.normalize()
@@ -602,60 +910,56 @@ else:
             .sort_index()
         )
 
-        # Include dates between the first recent entry and today.
-        # Missing dates are treated as zero; if you did not record
-        # all expenses, the prediction may be less accurate.
-        full_dates = pd.date_range(
-            start=recent_daily.index.min(),
-            end=today,
-            freq="D"
-        )
+        # A date with no entry is unknown, not necessarily zero.
+        # Therefore, use recorded days for the baseline.
+        recorded_dates = recent_daily.index
 
-        recent_daily = recent_daily.reindex(
-            full_dates,
-            fill_value=0
-        )
-
-        recent_daily.index.name = "Date"
-
-        number_of_days = len(recent_daily)
-
-        if number_of_days < 2:
+        if len(recorded_dates) < 2:
 
             st.warning(
-                "At least two days of expense history are required "
-                "to train the prediction model."
+                "At least two different dates with expense entries "
+                "are required for Linear Regression."
             )
 
         else:
 
-            X = pd.DataFrame({
-                "Day": range(number_of_days)
-            })
+            # Use elapsed days from the first recorded date.
+            X = (
+                recorded_dates - recorded_dates.min()
+            ).days.to_numpy().reshape(-1, 1)
 
-            y = recent_daily.values
+            y = recent_daily.to_numpy()
 
             model = LinearRegression()
 
             model.fit(X, y)
-
-            future_X = pd.DataFrame({
-                "Day": range(
-                    number_of_days,
-                    number_of_days + forecast_days
-                )
-            })
-
-            predictions = model.predict(future_X)
-
-            # Expenses cannot be negative.
-            predictions = predictions.clip(min=0)
 
             future_dates = pd.date_range(
                 start=today + pd.Timedelta(days=1),
                 periods=forecast_days,
                 freq="D"
             )
+
+            future_X = (
+                future_dates - recorded_dates.min()
+            ).days.to_numpy().reshape(-1, 1)
+
+            predictions = model.predict(future_X)
+
+            predictions = predictions.clip(min=0)
+
+            # Guard against extreme extrapolation.
+            # This cap is a practical safeguard, not a guarantee
+            # of prediction accuracy.
+            recent_average = float(recent_daily.mean())
+
+            if recent_average > 0:
+
+                daily_cap = recent_average * 3
+
+                predictions = predictions.clip(
+                    max=daily_cap
+                )
 
             forecast = pd.DataFrame({
                 "Date": future_dates,
@@ -671,26 +975,36 @@ else:
                 use_container_width=True
             )
 
-            total_prediction = predictions.sum()
+            total_prediction = float(predictions.sum())
 
             st.metric(
-                f"Total Predicted Spending ({forecast_days} Days)",
+                f"Estimated Spending ({forecast_days} Days)",
                 f"₹{total_prediction:,.2f}"
             )
 
             st.caption(
-                "This is an estimate from a simple Linear Regression model, "
-                "not a guarantee. Predictions may be unreliable when there "
-                "are few records or missing expense entries."
+                "This is a Linear Regression estimate based on "
+                "recent recorded spending. Predictions are limited "
+                "to three times the recent average per recorded day "
+                "to reduce extreme extrapolation. The limit does not "
+                "guarantee accuracy."
             )
 
-            # Historical vs forecast graph
+            if len(recorded_dates) < 7:
+
+                st.warning(
+                    "Prediction may be unreliable because fewer than "
+                    "7 different dates contain expense records."
+                )
+
+            # Plot recorded expenses and predicted expenses.
             fig, ax = plt.subplots(figsize=(10, 5))
 
             ax.plot(
                 recent_daily.index,
                 recent_daily.values,
-                label="Recently Recorded Expenses"
+                marker="o",
+                label="Recorded Daily Expenses"
             )
 
             ax.plot(
@@ -701,7 +1015,7 @@ else:
             )
 
             ax.set_title(
-                "Recent Expenses vs Future Prediction"
+                "Recent Recorded Expenses vs Future Prediction"
             )
 
             ax.set_xlabel("Date")
@@ -710,13 +1024,17 @@ else:
             ax.legend()
             ax.grid(True)
 
-            plt.xticks(rotation=35, ha="right")
+            plt.xticks(
+                rotation=35,
+                ha="right"
+            )
+
             plt.tight_layout()
 
             st.pyplot(fig)
+
             plt.close(fig)
 
-            # Download forecast
             st.download_button(
                 label="📥 Download Forecast CSV",
                 data=forecast.to_csv(
@@ -725,6 +1043,211 @@ else:
                 file_name="future_expense_forecast.csv",
                 mime="text/csv"
             )
+
+
+
+st.header("✏️ Manage Current Expenses")
+
+user_expenses = load_current_expenses()
+
+if user_expenses.empty:
+
+    st.info(
+        "No current expenses available to edit or delete."
+    )
+
+else:
+
+    search_text = st.text_input(
+        "🔎 Search by category or note"
+    )
+
+    manageable_expenses = user_expenses.copy()
+
+    if search_text.strip():
+
+        search_text = search_text.strip()
+
+        matching_rows = (
+            manageable_expenses["Category"]
+            .astype(str)
+            .str.contains(
+                search_text,
+                case=False,
+                na=False
+            )
+            |
+            manageable_expenses["Note"]
+            .astype(str)
+            .str.contains(
+                search_text,
+                case=False,
+                na=False
+            )
+        )
+
+        manageable_expenses = manageable_expenses[
+            matching_rows
+        ].copy()
+
+    st.dataframe(
+        manageable_expenses.sort_values(
+            "Date",
+            ascending=False
+        ),
+        use_container_width=True
+    )
+
+    if not manageable_expenses.empty:
+
+        selected_id = st.selectbox(
+            "Select Expense ID to edit or delete",
+            manageable_expenses["Expense ID"].tolist()
+        )
+
+        selected_record = user_expenses[
+            user_expenses["Expense ID"] == selected_id
+        ].iloc[0]
+
+        with st.expander("✏️ Edit Selected Expense"):
+
+            with st.form("edit_expense_form"):
+
+                edit_date = st.date_input(
+                    "Expense Date",
+                    value=selected_record["Date"].date()
+                )
+
+                edit_category = st.text_input(
+                    "Category",
+                    value=str(selected_record["Category"])
+                )
+
+                edit_amount = st.number_input(
+                    "Amount (₹)",
+                    min_value=0.01,
+                    value=max(
+                        float(selected_record["Amount"]),
+                        0.01
+                    ),
+                    step=10.0
+                )
+
+                edit_note = st.text_input(
+                    "Note",
+                    value=str(selected_record["Note"])
+                )
+
+                update_button = st.form_submit_button(
+                    "Update Expense"
+                )
+
+            if update_button:
+
+                if not edit_category.strip():
+
+                    st.error(
+                        "Category cannot be empty."
+                    )
+
+                elif pd.Timestamp(edit_date) > today:
+
+                    st.error(
+                        "Expense date cannot be in the future."
+                    )
+
+                else:
+
+                    updated_records = user_expenses.copy()
+
+                    row_mask = (
+                        updated_records["Expense ID"]
+                        == selected_id
+                    )
+
+                    updated_records.loc[
+                        row_mask,
+                        "Date"
+                    ] = pd.Timestamp(edit_date)
+
+                    updated_records.loc[
+                        row_mask,
+                        "Category"
+                    ] = edit_category.strip()
+
+                    updated_records.loc[
+                        row_mask,
+                        "Amount"
+                    ] = float(edit_amount)
+
+                    updated_records.loc[
+                        row_mask,
+                        "Note"
+                    ] = edit_note
+
+                    try:
+
+                        save_current_expenses(
+                            updated_records
+                        )
+
+                        st.success(
+                            "Expense updated successfully!"
+                        )
+
+                        st.rerun()
+
+                    except OSError as error:
+
+                        st.error(
+                            f"Unable to update expense: {error}"
+                        )
+
+        with st.expander("🗑️ Delete Selected Expense"):
+
+            st.write(
+                f"Selected amount: ₹{selected_record['Amount']:,.2f}"
+            )
+
+            confirm_delete = st.checkbox(
+                "I confirm that I want to delete this expense.",
+                key=f"confirm_delete_{selected_id}"
+            )
+
+            if st.button(
+                "Delete Expense",
+                key=f"delete_button_{selected_id}"
+            ):
+
+                if not confirm_delete:
+
+                    st.warning(
+                        "Please confirm before deleting."
+                    )
+
+                else:
+
+                    remaining_records = user_expenses[
+                        user_expenses["Expense ID"] != selected_id
+                    ].copy()
+
+                    try:
+
+                        save_current_expenses(
+                            remaining_records
+                        )
+
+                        st.success(
+                            "Expense deleted successfully!"
+                        )
+
+                        st.rerun()
+
+                    except OSError as error:
+
+                        st.error(
+                            f"Unable to delete expense: {error}"
+                        )
 
 
 
@@ -741,7 +1264,7 @@ st.dataframe(
 )
 
 st.download_button(
-    label="📥 Download Expense Data",
+    label="📥 Download Filtered Expense Data",
     data=display_expenses.to_csv(
         index=False
     ).encode("utf-8"),
@@ -750,8 +1273,9 @@ st.download_button(
 )
 
 
-
 st.header("📂 Your Current Expense Records")
+
+user_expenses = load_current_expenses()
 
 if not user_expenses.empty:
 
@@ -776,10 +1300,8 @@ else:
 
     st.info(
         "No current expenses entered yet. "
-        "Use the form at the top to add your first expense."
+        "Use the form above to add your first expense."
     )
-
-
 
 st.divider()
 
