@@ -459,7 +459,7 @@ plt.close(fig)
 st.dataframe(
     monthly_expenses.rename(
         "Total Expense (₹)"
-    ).reset_index(names="Month"),
+    ).reset_index().rename(columns={"Date": "Month"}),
     use_container_width=True
 )
 
