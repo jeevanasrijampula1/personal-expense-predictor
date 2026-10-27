@@ -1,0 +1,278 @@
+Date,Account,Category,Subcategory,Note,INR,Income/Expense,Note.1,Amount,Currency,Account.1
+2021-11-21 13:30:00,CUB - online payment,Other,,Got from gobi,2000.0,Income,,2000.0,INR,2000.0
+2021-11-21 15:50:00,CUB - online payment,Food,,Lunch,875.0,Expense,,875.0,INR,875.0
+2021-11-21 17:07:00,CUB - online payment,Transportation,,Rapido,130.0,Expense,,130.0,INR,130.0
+2021-11-22 14:16:00,CUB - online payment,Food,,Lunch with company,97.0,Expense,,97.0,INR,97.0
+2021-11-22 14:16:00,CUB - online payment,Food,,Dinner,90.0,Expense,,90.0,INR,90.0
+2021-11-23 22:53:00,CUB - online payment,Food,,Dinner,179.0,Expense,,179.0,INR,179.0
+2021-11-23 22:53:00,CUB - online payment,Transportation,,Rapido,50.0,Expense,,50.0,INR,50.0
+2021-11-24 19:06:00,CUB - online payment,Transportation,,Rapido,58.0,Expense,,58.0,INR,58.0
+2021-11-24 19:06:00,CUB - online payment,Food,,Panipoori,20.0,Expense,,20.0,INR,20.0
+2021-11-24 19:23:00,CUB - online payment,Food,,Dinner,70.0,Expense,,70.0,INR,70.0
+2021-11-24 19:26:00,CUB - online payment,Food,,Snack,15.0,Expense,,15.0,INR,15.0
+2021-11-25 20:27:00,CUB - online payment,Food,,Dinner,95.0,Expense,,95.0,INR,95.0
+2021-11-25 20:27:00,CUB - online payment,Transportation,,Rapido,58.0,Expense,,58.0,INR,58.0
+2021-11-25 20:27:00,CUB - online payment,Food,,Lunch with company,145.0,Expense,,145.0,INR,145.0
+2021-11-26 09:22:00,CUB - online payment,Food,,Breakfast,60.0,Expense,,60.0,INR,60.0
+2021-11-26 14:14:00,CUB - online payment,Food,,Lunch with company,150.0,Expense,,150.0,INR,150.0
+2021-11-26 14:14:00,CUB - online payment,Petty cash,,Cashback,3.0,Income,,3.0,INR,3.0
+2021-11-26 20:15:00,CUB - online payment,Food,,Panipoori,40.0,Expense,,40.0,INR,40.0
+2021-11-26 20:57:00,CUB - online payment,Food,,Snack,102.0,Expense,,102.0,INR,102.0
+2021-11-26 21:56:00,CUB - online payment,Food,,Beer,150.0,Expense,,150.0,INR,150.0
+2021-11-27 09:33:00,CUB - online payment,Food,,Breakfast,30.0,Expense,,30.0,INR,30.0
+2021-11-27 13:46:00,CUB - online payment,Food,,Lunch with company,75.0,Expense,,75.0,INR,75.0
+2021-11-27 13:46:00,CUB - online payment,Allowance,,From dad,2000.0,Income,,2000.0,INR,2000.0
+2021-11-27 18:41:00,CUB - online payment,Transportation,,Rapido,35.0,Expense,,35.0,INR,35.0
+2021-11-27 22:34:00,CUB - online payment,Food,,Dinner with gowdham,130.0,Expense,,130.0,INR,130.0
+2021-11-27 23:14:00,CUB - online payment,Food,,Dinner with gowdham,120.0,Expense,,120.0,INR,120.0
+2021-11-28 13:10:00,CUB - online payment,Food,,Zomato,269.4,Expense,,269.4,INR,269.4
+2021-11-28 19:59:00,CUB - online payment,Food,,Snack,94.0,Expense,,94.0,INR,94.0
+2021-11-29 09:29:00,CUB - online payment,Food,,Breakfast,40.0,Expense,,40.0,INR,40.0
+2021-11-29 20:09:00,CUB - online payment,Food,,Panipoori,40.0,Expense,,40.0,INR,40.0
+2021-11-29 20:47:00,CUB - online payment,Food,,Dinner,50.0,Expense,,50.0,INR,50.0
+2021-11-29 20:47:00,CUB - online payment,Food,,Lunch with company,40.0,Expense,,40.0,INR,40.0
+2021-11-30 10:11:00,CUB - online payment,Food,,Breakfast,70.0,Expense,,70.0,INR,70.0
+2021-11-30 14:17:00,CUB - online payment,Food,,Lunch with company,128.0,Expense,,128.0,INR,128.0
+2021-11-30 14:24:00,CUB - online payment,Gift,,Bharath birthday,115.0,Expense,,115.0,INR,115.0
+2021-12-01 14:00:00,CUB - online payment,Food,,Lunch with company,160.0,Expense,,160.0,INR,160.0
+2021-12-01 19:57:00,CUB - online payment,Beauty,,Showergel,196.0,Expense,,196.0,INR,196.0
+2021-12-02 19:48:00,CUB - online payment,Food,,Vadapaav,75.0,Expense,,75.0,INR,75.0
+2021-12-02 20:07:00,CUB - online payment,Food,,Ice cream,504.0,Expense,,504.0,INR,504.0
+2021-12-03 21:28:00,CUB - online payment,Food,,Snack,40.0,Expense,,40.0,INR,40.0
+2021-12-03 21:28:00,CUB - online payment,Apparel,,Mask,20.0,Expense,,20.0,INR,20.0
+2021-12-03 21:28:00,CUB - online payment,Allowance,,From dad,1000.0,Income,,1000.0,INR,1000.0
+2021-12-03 21:59:00,CUB - online payment,Apparel,,Belt,130.0,Expense,,130.0,INR,130.0
+2021-12-03 21:59:00,CUB - online payment,Food,,Milk with bharath,25.0,Expense,,25.0,INR,25.0
+2021-12-04 10:13:00,CUB - online payment,Food,,Breakfast,200.0,Expense,,200.0,INR,200.0
+2021-12-04 13:54:00,CUB - online payment,Other,,For company,30.0,Expense,,30.0,INR,30.0
+2021-12-04 20:20:00,CUB - online payment,Food,,Snack,65.0,Expense,,65.0,INR,65.0
+2021-12-04 21:05:00,CUB - online payment,Food,,Dinner,324.0,Expense,,324.0,INR,324.0
+2021-12-05 12:23:00,CUB - online payment,Allowance,,From dad,8000.0,Income,,8000.0,INR,8000.0
+2021-12-05 12:23:00,CUB - online payment,Household,,Rent,4800.0,Expense,,4800.0,INR,4800.0
+2021-12-05 18:41:00,CUB - online payment,Apparel,,Full hand and a hoodie,1800.0,Expense,,1800.0,INR,1800.0
+2021-12-05 19:45:00,CUB - online payment,Food,,Milk with bharath,25.0,Expense,,25.0,INR,25.0
+2021-12-06 14:08:00,CUB - online payment,Food,,Lunch with stu,150.0,Expense,,150.0,INR,150.0
+2021-12-06 19:57:00,CUB - online payment,Apparel,,Cap,140.0,Expense,,140.0,INR,140.0
+2021-12-06 20:07:00,CUB - online payment,Apparel,,Shoe,500.0,Expense,,500.0,INR,500.0
+2021-12-06 21:59:00,CUB - online payment,Food,,Milk with bharath,25.0,Expense,,25.0,INR,25.0
+2021-12-07 07:59:00,CUB - online payment,Food,,Horlicks,15.0,Expense,,15.0,INR,15.0
+2021-12-07 09:54:00,CUB - online payment,Food,,Milk with bharath,25.0,Expense,,25.0,INR,25.0
+2021-12-08 07:17:00,CUB - online payment,Food,,Milk,10.0,Expense,,10.0,INR,10.0
+2021-12-08 14:15:00,Cash,Food,,5 star,1120.72,Expense,,15.0,USD,15.0
+2021-12-08 14:15:00,CUB - online payment,Food,,Lunch with stu,100.0,Expense,,100.0,INR,100.0
+2021-12-09 08:47:00,CUB - online payment,Food,,Breakfast with stu,110.0,Expense,,110.0,INR,110.0
+2021-12-09 09:56:00,CUB - online payment,Food,,Milk with bharath,25.0,Expense,,25.0,INR,25.0
+2021-12-09 14:01:00,CUB - online payment,Food,,Lunch with company,280.0,Expense,,280.0,INR,280.0
+2021-12-09 20:03:00,CUB - online payment,Food,,Snack with bharath,40.0,Expense,,40.0,INR,40.0
+2021-12-10 20:55:00,CUB - online payment,Food,,Momos,195.0,Expense,,195.0,INR,195.0
+2021-12-10 21:38:00,CUB - online payment,Food,,Shopping,241.0,Expense,,241.0,INR,241.0
+2021-12-11 08:20:00,CUB - online payment,Other,,From stu,240.0,Income,,240.0,INR,240.0
+2021-12-11 09:22:00,CUB - online payment,Allowance,,From dad,1000.0,Income,,1000.0,INR,1000.0
+2021-12-12 21:47:00,CUB - online payment,Food,,Milk with bharath,25.0,Expense,,25.0,INR,25.0
+2021-12-14 10:33:00,CUB - online payment,Food,,Milk with bharath,65.0,Expense,,65.0,INR,65.0
+2021-12-14 15:18:00,CUB - online payment,Food,,Snacks,74.0,Expense,,74.0,INR,74.0
+2021-12-14 21:03:00,CUB - online payment,Food,,Panipoori,80.0,Expense,,80.0,INR,80.0
+2021-12-14 21:21:00,CUB - online payment,Food,,Snacks,75.0,Expense,,75.0,INR,75.0
+2021-12-14 23:54:00,CUB - online payment,Food,,Lunch,40.0,Expense,,40.0,INR,40.0
+2021-12-16 10:42:00,CUB - online payment,Food,,Milk with bharath,110.0,Expense,,110.0,INR,110.0
+2021-12-16 13:38:00,CUB - online payment,Food,,Lunch,30.0,Expense,,30.0,INR,30.0
+2021-12-16 18:35:00,CUB - online payment,Food,,Panipoori,20.0,Expense,,20.0,INR,20.0
+2021-12-16 18:44:00,CUB - online payment,Food,,Egg,30.0,Expense,,30.0,INR,30.0
+2021-12-17 08:35:00,CUB - online payment,Other,,Gave to gowdham,50.0,Expense,,50.0,INR,50.0
+2021-12-17 14:45:00,CUB - online payment,Food,,Lunch with company,110.0,Expense,,110.0,INR,110.0
+2021-12-17 18:54:00,CUB - online payment,Food,,Milk with bharath,70.0,Expense,,70.0,INR,70.0
+2021-12-18 14:19:00,CUB - online payment,Food,,Lunch,160.0,Expense,,160.0,INR,160.0
+2021-12-18 19:51:00,CUB - online payment,Social Life,,Spiderman ,363.72,Expense,,363.72,INR,363.72
+2021-12-18 19:52:00,CUB - online payment,Other,,Lended money,400.0,Income,,400.0,INR,400.0
+2021-12-18 21:00:00,CUB - online payment,Allowance,,From dad,1000.0,Income,,1000.0,INR,1000.0
+2021-12-18 21:00:00,CUB - online payment,Food,,To rahul,113.0,Expense,,113.0,INR,113.0
+2021-12-18 21:01:00,CUB - online payment,Other,,To kumara,100.0,Expense,,100.0,INR,100.0
+2021-12-18 21:01:00,CUB - online payment,Other,,To abijith,200.0,Expense,,200.0,INR,200.0
+2021-12-19 15:51:00,CUB - online payment,Other,,To siva,100.0,Expense,,100.0,INR,100.0
+2021-12-20 09:46:00,CUB - online payment,Food,,Milk with bharath,40.0,Expense,,40.0,INR,40.0
+2021-12-20 13:35:00,CUB - online payment,Food,,Lunch with barath,85.0,Expense,,85.0,INR,85.0
+2021-12-20 15:29:00,CUB - online payment,Food,,Water,20.0,Expense,,20.0,INR,20.0
+2021-12-20 16:55:00,CUB - online payment,Food,,Snacks,20.0,Expense,,20.0,INR,20.0
+2021-12-20 19:22:00,CUB - online payment,Transportation,,Taxi,80.0,Expense,,80.0,INR,80.0
+2021-12-20 19:23:00,CUB - online payment,Food,,Milk with bharath,80.0,Expense,,80.0,INR,80.0
+2021-12-21 11:43:00,CUB - online payment,Food,,Bun,18.0,Expense,,18.0,INR,18.0
+2021-12-21 14:02:00,CUB - online payment,Food,,Puffs,25.0,Expense,,25.0,INR,25.0
+2021-12-21 20:53:00,CUB - online payment,Food,,Dinner with barath,239.0,Expense,,239.0,INR,239.0
+2021-12-23 13:51:00,CUB - online payment,Food,,Puffs and coffee,32.0,Expense,,32.0,INR,32.0
+2021-12-23 16:31:00,CUB - online payment,Food,,Lemon tea with company,15.0,Expense,,15.0,INR,15.0
+2021-12-24 14:35:00,CUB - online payment,Food,,Lunch with company,262.0,Expense,,262.0,INR,262.0
+2021-12-24 21:49:00,CUB - online payment,Social Life,,Beer,150.0,Expense,,150.0,INR,150.0
+2021-12-25 13:32:00,CUB - online payment,Food,,Milk with bharath,40.0,Expense,,40.0,INR,40.0
+2021-12-25 15:35:00,CUB - online payment,Food,,Water,30.0,Expense,,30.0,INR,30.0
+2021-12-25 17:01:00,CUB - online payment,Food,,Corn,30.0,Expense,,30.0,INR,30.0
+2021-12-25 19:50:00,CUB - online payment,Self-development,,Books,400.0,Expense,,400.0,INR,400.0
+2021-12-25 20:46:00,CUB - online payment,Transportation,,Cab,306.0,Expense,,306.0,INR,306.0
+2021-12-25 22:53:00,CUB - online payment,Food,,Dinner with barath,504.0,Expense,,504.0,INR,504.0
+2021-12-27 12:33:00,CUB - online payment,Food,,Coconut water with stu,50.0,Expense,,50.0,INR,50.0
+2021-12-27 12:33:00,CUB - online payment,Other,,From ganesan,40.0,Income,,40.0,INR,40.0
+2021-12-27 13:44:00,CUB - online payment,Other,,From vicky,80.0,Income,,80.0,INR,80.0
+2021-12-27 13:45:00,CUB - online payment,Food,,Lunch with barath,115.0,Expense,,115.0,INR,115.0
+2021-12-28 13:42:00,CUB - online payment,Food,,Coffee and thattai,14.0,Expense,,14.0,INR,14.0
+2021-12-30 11:44:00,CUB - online payment,Other,,From Deepak,250.0,Income,,250.0,INR,250.0
+2021-12-30 11:45:00,CUB - online payment,Transportation,,Rapido + toll,286.0,Expense,,286.0,INR,286.0
+2021-12-30 11:45:00,CUB - online payment,Other,,From abi,20.0,Income,,20.0,INR,20.0
+2021-12-30 11:45:00,CUB - online payment,Food,,Water,20.0,Expense,,20.0,INR,20.0
+2021-12-30 12:37:00,CUB - online payment,Other,,From Deepak,250.0,Income,,250.0,INR,250.0
+2021-12-30 12:38:00,CUB - online payment,Transportation,,Bommasandra to pg,199.0,Expense,,199.0,INR,199.0
+2021-12-30 12:43:00,CUB - online payment,Food,,Horlicks + kolakattai,25.0,Expense,,25.0,INR,25.0
+2021-12-30 13:36:00,CUB - online payment,Other,,From kumara,30.0,Income,,30.0,INR,30.0
+2021-12-30 13:56:00,CUB - online payment,Transportation,,Pg to office,43.0,Expense,,43.0,INR,43.0
+2021-12-30 14:10:00,CUB - online payment,Food,,To barath,20.0,Expense,,20.0,INR,20.0
+2022-01-01 21:45:00,CUB - online payment,Allowance,,From dad,1000.0,Income,,1000.0,INR,1000.0
+2022-01-01 21:46:00,CUB - online payment,Food,,Snacks,85.0,Expense,,85.0,INR,85.0
+2022-01-02 14:16:00,CUB - online payment,Transportation,,Train to vnr,725.0,Expense,,725.0,INR,725.0
+2022-01-02 20:32:00,CUB - online payment,Food,,Dinner with barath,200.0,Expense,,200.0,INR,200.0
+2022-01-02 20:33:00,CUB - online payment,Other,,Tablet to gowdham,8.0,Expense,,8.0,INR,8.0
+2022-01-03 14:30:00,CUB - online payment,Other,,From abi,300.0,Income,,300.0,INR,300.0
+2022-01-03 14:31:00,CUB - online payment,Food,,Lunch unlimited nv,300.0,Expense,,300.0,INR,300.0
+2022-01-03 21:11:00,CUB - online payment,Other,,From shakur,140.0,Income,,140.0,INR,140.0
+2022-01-03 21:12:00,CUB - online payment,Other,,From gpay,5.0,Income,,5.0,INR,5.0
+2022-01-03 21:54:00,CUB - online payment,Other,,From barath,201.0,Income,,201.0,INR,201.0
+2022-01-03 22:15:00,CUB - online payment,Food,,Dairy milk,10.0,Expense,,10.0,INR,10.0
+2022-01-04 07:58:00,CUB - online payment,Food,,Sent to preethi,107.0,Expense,,107.0,INR,107.0
+2022-01-04 08:01:00,CUB - online payment,Other,,To vicky,80.0,Expense,,80.0,INR,80.0
+2022-01-04 13:53:00,CUB - online payment,Food,,Lunch with company,106.0,Expense,,106.0,INR,106.0
+2022-01-04 22:10:00,CUB - online payment,Salary,,Salary,8000.0,Income,,8000.0,INR,8000.0
+2022-01-04 22:11:00,CUB - online payment,Education,,Arrear and reval fee,1400.0,Expense,,1400.0,INR,1400.0
+2022-01-05 14:30:00,CUB - online payment,Food,,Lunch with company,388.0,Expense,,388.0,INR,388.0
+2022-01-05 14:35:00,CUB - online payment,Transportation,,Refund for bus ticket,60.0,Expense,,60.0,INR,60.0
+2022-01-05 14:37:00,CUB - online payment,Other,,To abijith and to vicky lend money returned,500.0,Expense,,500.0,INR,500.0
+2022-01-05 14:39:00,CUB - online payment,Other,,To gobi 1st 1/4th,500.0,Expense,,500.0,INR,500.0
+2022-01-05 14:42:00,CUB - online payment,Food,,Jan 2nd with shakur and barath,354.0,Expense,,354.0,INR,354.0
+2022-01-05 14:42:00,CUB - online payment,Other,,Lended money returned to kumara,30.0,Expense,,30.0,INR,30.0
+2022-01-05 14:46:00,CUB - online payment,Other,,Lended money returned to vishnu,40.0,Expense,,40.0,INR,40.0
+2022-01-05 20:23:00,CUB - online payment,Food,,McDonald's with company,211.0,Expense,,211.0,INR,211.0
+2022-01-06 11:48:00,CUB - online payment,Transportation,,Rapido to pg,42.0,Expense,,42.0,INR,42.0
+2022-01-06 14:22:00,CUB - online payment,Food,,Bingo,10.0,Expense,,10.0,INR,10.0
+2022-01-06 20:13:00,CUB - online payment,Food,,Dinner with roommate,877.81,Expense,,877.81,INR,877.81
+2022-01-06 20:58:00,CUB - online payment,Food,,Ketch up,20.0,Expense,,20.0,INR,20.0
+2022-01-06 21:30:00,CUB - online payment,Other,,From barath and shakur,440.0,Income,,440.0,INR,440.0
+2022-01-07 13:51:00,CUB - online payment,Food,,Coffee + biscuit,15.0,Expense,,15.0,INR,15.0
+2022-01-08 13:38:00,CUB - online payment,Household,,Rent,4580.0,Expense,,4580.0,INR,4580.0
+2022-01-08 13:45:00,CUB - online payment,Food,,Lunch with gowdham,535.3,Expense,,535.3,INR,535.3
+2022-01-08 13:46:00,CUB - online payment,Other,,From gowdham,260.0,Income,,260.0,INR,260.0
+2022-01-10 14:04:00,CUB - online payment,Food,,Friday snacks with preethi gang,106.0,Expense,,106.0,INR,106.0
+2022-01-11 14:07:00,CUB - online payment,Food,,Lunch with not preethi,135.5,Expense,,135.5,INR,135.5
+2022-01-12 13:25:00,CUB - online payment,Food,,Pizza,301.75,Expense,,301.75,INR,301.75
+2022-01-12 13:25:00,CUB - online payment,Other,,From kumara,200.0,Income,,200.0,INR,200.0
+2022-01-12 22:44:00,CUB - online payment,Other,,Recharge by gowdham,479.0,Expense,,479.0,INR,479.0
+2022-01-13 17:47:00,CUB - online payment,Transportation,,Rapido to pg,43.0,Expense,,43.0,INR,43.0
+2022-01-13 19:10:00,CUB - online payment,Other,,From dad,1000.0,Income,,1000.0,INR,1000.0
+2022-01-13 20:46:00,CUB - online payment,Food,,Dinner,66.0,Expense,,66.0,INR,66.0
+2022-01-14 16:54:00,CUB - online payment,Food,,Lunch pongal,1530.0,Expense,,1530.0,INR,1530.0
+2022-01-14 16:54:00,CUB - online payment,Other,,From gowdham,340.0,Income,,340.0,INR,340.0
+2022-01-14 16:55:00,CUB - online payment,Other,,Dinesh and maddy + 100 cash,240.0,Income,,240.0,INR,240.0
+2022-01-14 16:56:00,CUB - online payment,Other,,Gundan + prasanna,340.0,Income,,340.0,INR,340.0
+2022-01-14 16:56:00,CUB - online payment,Other,,Siva + 100 cash,70.0,Income,,70.0,INR,70.0
+2022-01-14 16:58:00,CUB - online payment,Other,,Kumara,170.0,Income,,170.0,INR,170.0
+2022-01-15 21:16:00,CUB - online payment,Food,,Snacks,70.0,Expense,,70.0,INR,70.0
+2022-01-15 21:16:00,CUB - online payment,Other,,From dad,1500.0,Income,,1500.0,INR,1500.0
+2022-01-15 21:17:00,CUB - online payment,Transportation,,Bus to Bangalore,1365.0,Expense,,1365.0,INR,1365.0
+2022-01-17 18:31:00,CUB - online payment,Food,,Eve snack,100.0,Expense,,100.0,INR,100.0
+2022-01-18 12:59:00,CUB - online payment,Other,,To kumara,200.0,Expense,,200.0,INR,200.0
+2022-01-18 12:59:00,CUB - online payment,Other,,From dad,1000.0,Income,,1000.0,INR,1000.0
+2022-01-18 13:51:00,CUB - online payment,Food,,Lunch with company,148.0,Expense,,148.0,INR,148.0
+2022-01-18 17:10:00,CUB - online payment,Food,,Snack with preethi,59.0,Expense,,59.0,INR,59.0
+2022-01-18 20:54:00,CUB - online payment,Food,,Dinner,301.15,Expense,,301.15,INR,301.15
+2022-01-19 14:27:00,CUB - online payment,Food,,Lunch + chocolate for preethi,171.0,Expense,,171.0,INR,171.0
+2022-01-21 11:47:00,CUB - online payment,Other,,From vicky,200.0,Income,,200.0,INR,200.0
+2022-01-21 11:47:00,CUB - online payment,Food,,Snacks,37.0,Expense,,37.0,INR,37.0
+2022-01-21 14:22:00,CUB - online payment,Food,,Lunch with company,188.0,Expense,,188.0,INR,188.0
+2022-01-23 21:27:00,CUB - online payment,Other,,From dad,2000.0,Income,,2000.0,INR,2000.0
+2022-01-23 21:27:00,CUB - online payment,Social Life,,Badminton,200.0,Expense,,200.0,INR,200.0
+2022-01-23 21:27:00,CUB - online payment,Food,,Snacks with preethi and azar,176.0,Expense,,176.0,INR,176.0
+2022-01-23 21:29:00,CUB - online payment,Other,,From vicky,310.0,Income,,310.0,INR,310.0
+2022-01-23 21:29:00,CUB - online payment,Food,,Lunch,302.0,Expense,,302.0,INR,302.0
+2022-01-23 21:29:00,CUB - online payment,Food,,Sent to vicky,300.0,Expense,,300.0,INR,300.0
+2022-01-23 21:41:00,CUB - online payment,Food,,Dinner,465.0,Expense,,465.0,INR,465.0
+2022-01-23 21:45:00,CUB - online payment,Food,,Pepsi,40.0,Expense,,40.0,INR,40.0
+2022-01-24 14:08:00,CUB - online payment,Food,,Lunch with company,133.0,Expense,,133.0,INR,133.0
+2022-01-24 20:17:00,CUB - online payment,Food,,Snack,40.0,Expense,,40.0,INR,40.0
+2022-01-25 09:20:00,CUB - online payment,Transportation,,Train to vnr,325.0,Expense,,325.0,INR,325.0
+2022-01-25 10:23:00,CUB - online payment,Food,,Lemon tea,18.0,Expense,,18.0,INR,18.0
+2022-01-25 13:35:00,CUB - online payment,Food,,Kfc date with myself,259.0,Expense,,259.0,INR,259.0
+2022-01-26 16:52:00,CUB - online payment,Food,,Paani poori,25.0,Expense,,25.0,INR,25.0
+2022-01-26 17:45:00,CUB - online payment,Other,,Vishnu 100 gowdham 25,125.0,Income,,125.0,INR,125.0
+2022-01-26 17:45:00,CUB - online payment,Food,,Snacks,115.0,Expense,,115.0,INR,115.0
+2022-01-27 13:38:00,CUB - online payment,Other,,From dad,1500.0,Income,,1500.0,INR,1500.0
+2022-01-27 13:38:00,CUB - online payment,Other,,From vicky,300.0,Income,,300.0,INR,300.0
+2022-01-27 13:39:00,CUB - online payment,Food,,Zinger box meal,279.0,Expense,,279.0,INR,279.0
+2022-01-27 13:41:00,CUB - online payment,Other,,To vishnu,100.0,Expense,,100.0,INR,100.0
+2022-01-27 13:41:00,CUB - online payment,Other,,To vicky,300.0,Expense,,300.0,INR,300.0
+2022-01-27 21:25:00,CUB - online payment,Transportation,,Rapido to pg,43.0,Expense,,43.0,INR,43.0
+2022-01-28 14:23:00,CUB - online payment,Food,,Lunch with company,138.0,Expense,,138.0,INR,138.0
+2022-01-28 21:58:00,CUB - online payment,Food,,Banana,10.0,Expense,,10.0,INR,10.0
+2022-01-29 14:44:00,CUB - online payment,Other,,Sent to barath,100.0,Expense,,100.0,INR,100.0
+2022-01-29 21:56:00,CUB - online payment,Transportation,,Rapido to pg,44.0,Expense,,44.0,INR,44.0
+2022-01-30 12:28:00,CUB - online payment,Food,,Brunch,105.0,Expense,,105.0,INR,105.0
+2022-01-30 19:01:00,CUB - online payment,Food,,Cycle gap ,120.0,Expense,,120.0,INR,120.0
+2022-01-30 19:17:00,CUB - online payment,Food,,Dinner,155.0,Expense,,155.0,INR,155.0
+2022-01-31 08:26:00,CUB - online payment,Transportation,,To ksr station,153.0,Expense,,153.0,INR,153.0
+2022-01-31 08:27:00,CUB - online payment,Other,,To vicky,200.0,Expense,,200.0,INR,200.0
+2022-01-31 08:44:00,CUB - online payment,Transportation,,Vnr to apk,50.0,Expense,,50.0,INR,50.0
+2022-02-02 20:14:00,CUB - online payment,Other,,From dad,500.0,Income,,500.0,INR,500.0
+2022-02-02 20:15:00,CUB - online payment,Food,,Parotta,120.0,Expense,,120.0,INR,120.0
+2022-02-03 08:59:00,CUB - online payment,Other,,To gowdham,150.0,Expense,,150.0,INR,150.0
+2022-02-03 14:53:00,CUB - online payment,Food,,Good soup,50.0,Expense,,50.0,INR,50.0
+2022-02-04 20:28:00,CUB - online payment,Food,,Shawarma,80.0,Expense,,80.0,INR,80.0
+2022-02-06 16:40:00,CUB - online payment,Other,,To gobi,1500.0,Expense,,1500.0,INR,1500.0
+2022-02-06 16:41:00,CUB - online payment,Other,,Salary from dad,5000.0,Income,,5000.0,INR,5000.0
+2022-02-06 17:52:00,CUB - online payment,Transportation,,To chennai,1000.0,Expense,,1000.0,INR,1000.0
+2022-02-06 17:53:00,CUB - online payment,Food,,To kumara,150.0,Expense,,150.0,INR,150.0
+2022-02-06 18:32:00,CUB - online payment,Food,,Cakepark,125.0,Expense,,125.0,INR,125.0
+2022-02-07 07:08:00,CUB - online payment,Transportation,,Auto to Gobi's place,214.0,Expense,,214.0,INR,214.0
+2022-02-08 09:18:00,CUB - online payment,Household,,Bean bag,2099.0,Expense,,2099.0,INR,2099.0
+2022-02-08 10:37:00,CUB - online payment,Other,,From dad,1000.0,Income,,1000.0,INR,1000.0
+2022-02-10 20:15:00,CUB - online payment,Food,,Kfc dinner,641.0,Expense,,641.0,INR,641.0
+2022-02-11 22:41:00,CUB - online payment,Food,,Dinner with aravind,373.0,Expense,,373.0,INR,373.0
+2022-02-12 14:47:00,CUB - online payment,Other,,From dad,10000.0,Income,,10000.0,INR,10000.0
+2022-02-12 14:48:00,CUB - online payment,Food,,Lunch,80.0,Expense,,80.0,INR,80.0
+2022-02-12 16:04:00,CUB - online payment,Household,,Mirror,70.0,Expense,,70.0,INR,70.0
+2022-02-12 21:20:00,CUB - online payment,Food,,Dinner with aravind and buddies,491.0,Expense,,491.0,INR,491.0
+2022-02-13 21:54:00,CUB - online payment,Social Life,,Games ,100.0,Expense,,100.0,INR,100.0
+2022-02-16 16:57:00,CUB - online payment,Food,,Kfc ,475.0,Expense,,475.0,INR,475.0
+2022-02-16 16:57:00,CUB - online payment,Food,,Side dishes,165.0,Expense,,165.0,INR,165.0
+2022-02-17 13:11:00,CUB - online payment,Food,,Lunch,80.0,Expense,,80.0,INR,80.0
+2022-02-18 23:01:00,CUB - online payment,Food,,Kfc dinner,348.0,Expense,,348.0,INR,348.0
+2022-02-19 06:18:00,CUB - online payment,Transportation,,To egmore,270.0,Expense,,270.0,INR,270.0
+2022-02-19 06:27:00,CUB - online payment,Other,,To auto anna,50.0,Expense,,50.0,INR,50.0
+2022-02-19 08:26:00,CUB - online payment,Transportation,,Metro,60.0,Expense,,60.0,INR,60.0
+2022-02-19 20:45:00,CUB - online payment,Food,,Ramen with gobi,380.0,Expense,,380.0,INR,380.0
+2022-02-19 20:45:00,CUB - online payment,Transportation,,Took from sbi,200.0,Expense,,200.0,INR,200.0
+2022-02-19 21:35:00,CUB - online payment,Transportation,,Bus ticket,1575.0,Expense,,1575.0,INR,1575.0
+2022-02-19 21:57:00,CUB - online payment,Food,,Snacks,250.0,Expense,,250.0,INR,250.0
+2022-02-19 23:03:00,CUB - online payment,Food,,Random stuff for drinks,111.0,Expense,,111.0,INR,111.0
+2022-02-20 15:24:00,CUB - online payment,Food,,Lunch,200.0,Expense,,200.0,INR,200.0
+2022-02-21 15:38:00,CUB - online payment,Transportation,,Train cbe to chn,201.8,Expense,,201.8,INR,201.8
+2022-02-21 15:40:00,CUB - online payment,Household,,Stuffs,336.0,Expense,,336.0,INR,336.0
+2022-02-21 16:06:00,CUB - online payment,Transportation,,Travel to koyambedu,138.0,Expense,,138.0,INR,138.0
+2022-02-21 22:15:00,CUB - online payment,Transportation,,It better be worth it,1300.0,Expense,,1300.0,INR,1300.0
+2022-02-22 06:33:00,CUB - online payment,Transportation,,Auto to laxmi mills,120.0,Expense,,120.0,INR,120.0
+2022-02-23 12:38:00,CUB - online payment,Apparel,,Earphone,399.0,Expense,,399.0,INR,399.0
+2022-02-23 16:06:00,CUB - online payment,Food,,Eggs,83.0,Expense,,83.0,INR,83.0
+2022-02-23 17:35:00,CUB - online payment,Apparel,,Hoodie for gobi,399.0,Expense,,399.0,INR,399.0
+2022-02-24 19:15:00,CUB - online payment,Food,,Tamen,324.7,Expense,,324.7,INR,324.7
+2022-02-24 22:21:00,CUB - online payment,Food,,Creamstone,289.0,Expense,,289.0,INR,289.0
+2022-02-24 22:32:00,CUB - online payment,Household,,,303.0,Expense,,303.0,INR,303.0
+2022-02-25 12:08:00,CUB - online payment,Food,,,33.0,Expense,,33.0,INR,33.0
+2022-02-26 01:39:00,CUB - online payment,Food,,Tea lights,84.0,Expense,,84.0,INR,84.0
+2022-02-26 14:07:00,CUB - online payment,Food,,Snacks,40.0,Expense,,40.0,INR,40.0
+2022-02-26 16:01:00,CUB - online payment,Social Life,,,1700.0,Expense,,1700.0,INR,1700.0
+2022-02-26 17:37:00,CUB - online payment,Other,,To karthi,100.0,Expense,,100.0,INR,100.0
+2022-02-26 17:37:00,CUB - online payment,Other,,From dad,1500.0,Income,,1500.0,INR,1500.0
+2022-02-26 20:16:00,CUB - online payment,Food,,,25.0,Expense,,25.0,INR,25.0
+2022-02-27 15:29:00,CUB - online payment,Food,,Lunch,243.0,Expense,,243.0,INR,243.0
+2022-02-28 11:45:00,CUB - online payment,Other,,From kumara,200.0,Income,,200.0,INR,200.0
+2022-02-28 11:56:00,CUB - online payment,Food,,Pizza,339.15,Expense,,339.15,INR,339.15
+2022-03-01 18:21:00,CUB - online payment,Other,,From dad,500.0,Income,,500.0,INR,500.0
+2022-03-01 18:22:00,CUB - online payment,Other,,From vicky,100.0,Income,,100.0,INR,100.0
+2022-03-01 18:22:00,CUB - online payment,Food,,Snacks,67.0,Expense,,67.0,INR,67.0
+2022-03-01 18:56:00,CUB - online payment,Transportation,,Metro,30.0,Expense,,30.0,INR,30.0
+2022-03-01 19:50:00,CUB - online payment,Food,,Dinner,78.0,Expense,,78.0,INR,78.0
+2022-03-02 10:11:00,CUB - online payment,Other,,To lended people,300.0,Expense,,300.0,INR,300.0
+2022-03-02 10:11:00,CUB - online payment,Food,,Brownie,50.0,Expense,,50.0,INR,50.0
