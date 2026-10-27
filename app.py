@@ -425,7 +425,7 @@ monthly_expenses = (
 monthly_expenses.index = monthly_expenses.index.astype(str)
 
 fig, ax = plt.subplots(figsize=(10, 5))
-+
+
 monthly_expenses.plot(
     kind="line",
     marker="o",
